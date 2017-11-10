@@ -52,20 +52,21 @@ public final class MurmurHash3 {
     // tail
     int k1 = 0;
 
+    //suppress sonarcube warning as this is a correct piece of code, working with shifts
     switch(len & 0x03) {
-      case 3:
+      case 3: //NOSONAR
         k1 = (data[roundedEnd + 2] & 0xff) << 16;
         // fallthrough
-      case 2:
+      case 2: //NOSONAR
         k1 |= (data[roundedEnd + 1] & 0xff) << 8;
         // fallthrough
-      case 1:
+      case 1: //NOSONAR
         k1 |= data[roundedEnd] & 0xff;
         k1 *= c1;
         k1 = (k1 << 15) | (k1 >>> 17);  // ROTL32(k1,15);
         k1 *= c2;
         h1 ^= k1;
-      default:
+      default: //NOSONAR
     }
 
     // finalization
