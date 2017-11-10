@@ -339,6 +339,7 @@ public final class OrderBasedRecommenderEvaluator {
         }
       }
       if (vectorZ[i] != 0) {
+        if(count==0) break;
         ranks[i] = (rank / count) * (vectorZ[i] < 0 ? -1 : 1);  // better be at least 1
         ranksAbs[i] = Math.abs(ranks[i]);
       }
