@@ -107,7 +107,7 @@ public class Dataset {
 
   // Some literals for JSON representation
   static final String TYPE = "type";
-  static final String VALUES = "values";
+  static final String VALS = "values";
   static final String LABEL = "label";
 
   protected Dataset() {}
@@ -389,8 +389,8 @@ public class Dataset {
         if ((Boolean) attribute.get(LABEL)) {
           dataset.labelId = i - ignored.size();
         }
-        if (attribute.get(VALUES) != null) {
-          List<String> get = (List<String>) attribute.get(VALUES);
+        if (attribute.get(VALS) != null) {
+          List<String> get = (List<String>) attribute.get(VALS);
           String[] array = get.toArray(new String[get.size()]);
           nominalValues[i - ignored.size()] = array;
         }
@@ -415,7 +415,7 @@ public class Dataset {
   private Map<String, Object> getMap(Attribute type, String[] values, boolean isLabel) {
     Map<String, Object> attribute = new HashMap<>();
     attribute.put(TYPE, type.toString().toLowerCase(Locale.getDefault()));
-    attribute.put(VALUES, values);
+    attribute.put(VALS, values);
     attribute.put(LABEL, isLabel);
     return attribute;
   }
